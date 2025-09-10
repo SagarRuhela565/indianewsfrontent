@@ -7,24 +7,26 @@ export type logoItem = {
   alt?: string;
   title?: string;
   children?: logoItem[];
-}
+  width?: number;
+  height?: number;
+};
 
 interface CustomLogoProps {
-  logoArray: logoItem[];
+  logo: logoItem;
 }
 
-const CustomLogo: React.FC<CustomLogoProps> = ({ logoArray }) => {
-  console.log("title", logoArray);
+const CustomLogo: React.FC<CustomLogoProps> = ({ logo }) => {
+  if (!logo) return null;
 
   return (
     <a href="/" className="flex items-center">
       <Image
-        src={logoArray.url}
-        alt={logoArray.alt || "Logo"}
-        className="h-15 w-auto"
-        title={logoArray.title || ""}
-        width={150}
-        height={50}
+        src={logo.url || ""}
+        alt={logo.alt || "Logo"}
+        className="h-10 sm:h-15 w-auto "
+        title={logo.title || ""}
+        width={logo.width || 150}
+        height={logo.height || 50}
       />
     </a>
   );

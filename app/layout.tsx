@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../app/components/Header";
+import { poppins, timesNewerRoman } from "./fonts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="light">
+      <head>
+
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans bg-bg text-text-normal`}
+        className={`${poppins.variable} ${timesNewerRoman.variable} antialiased font-sans text-text-normal`}
       >
         <Header/>
         <main>{children}</main>

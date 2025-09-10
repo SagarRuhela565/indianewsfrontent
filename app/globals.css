@@ -1,5 +1,174 @@
 @import "tailwindcss";
 
+
+
+/* =========
+   DESIGN TOKENS (LIGHT)
+   ========= */
+@theme {
+
+    /* fonts */
+    --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, "Helvetica Neue", Arial;
+
+    /* core surfaces & text */
+    --color-bg: oklch(100% 0 0);
+    /* page background */
+    --color-surface: oklch(98% 0.01 256);
+    /* card background (very light gray) */
+    --color-edge: oklch(90% 0.02 256);
+    /* borders/dividers */
+
+    --color-text: oklch(20% 0.03 256);
+    /* primary body text */
+    --color-text-muted: oklch(55% 0.04 256);
+    /* secondary text */
+    --color-text-inverse: oklch(100% 0 0);
+    /* white on dark/brand */
+
+    /* brand + links (from mockup) */
+    --color-primary: oklch(51.7% 0.201 27.07);
+    /* BRAND RED (≈ #E11D48) */
+    --color-on-primary: oklch(100% 0 0);
+
+    --color-link: oklch(54.6% 0.245 262.88);
+    /* LINK BLUE */
+    --color-link-hover: oklch(48% 0.245 262.88);
+
+    /* subtle category accents (optional, seen as tiny chips in mockup) */
+    --color-accent-yellow: oklch(86% 0.133 91);
+    /* for 'Editor's Pick' vibe */
+    --color-accent-green: oklch(74% 0.12 148);
+    /* success/sport chip */
+    --color-accent-orange: oklch(71% 0.16 60);
+    /* highlight pill */
+
+    /* ring/focus uses brand */
+    --color-ring: var(--color-primary);
+
+    /* radii & shadows to match soft cards */
+    --radius-md: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.25rem;
+
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, .06);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, .08);
+
+
+}
+
+/* =========
+   DARK THEME (manual via .dark or [data-theme="dark"])
+   ========= */
+:root[data-theme="dark"],
+.dark {
+    @theme {
+        --color-bg: oklch(22% 0.02 256);
+        --color-surface: oklch(28% 0.02 256);
+        --color-edge: oklch(40% 0.02 256);
+
+        --color-text: oklch(95% 0.01 256);
+        --color-text-muted: oklch(72% 0.03 256);
+        --color-text-inverse: oklch(12% 0 0);
+
+        --color-primary: oklch(51.7% 0.201 27.07);
+        --color-on-primary: oklch(100% 0 0);
+
+        --color-link: oklch(70% 0.18 262);
+        --color-link-hover: oklch(64% 0.18 262);
+
+        --color-ring: var(--color-primary);
+
+        --shadow-soft: 0 8px 24px rgba(0, 0, 0, .35);
+        --shadow-card: 0 10px 30px rgba(0, 0, 0, .45);
+    }
+
+    :root {
+        font-family: var(--font-sans);
+    }
+
+    html,
+    body {
+        @apply bg-bg text-text;
+    }
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-timesnewer);
+}
+/* =========
+   BASE
+   ========= */
+
+
+/* container that matches the mockup */
+.container {
+    @apply mx-auto px-4;
+    /* max-width: var(--container-max); */
+}
+
+/* cards, badges, buttons reflecting the mockup look */
+.card {
+    @apply bg-surface border border-edge rounded-[var(--radius-2xl)] shadow-[var(--shadow-soft)];
+}
+
+.badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium;
+}
+
+.badge-brand {
+    @apply bg-primary text-on-primary;
+}
+
+.badge-muted {
+    @apply bg-surface text-text-muted border border-edge;
+}
+
+.btn {
+    @apply inline-flex items-center justify-center rounded-[var(--radius-xl)] px-4 py-2 text-sm font-medium;
+}
+
+.btn-primary {
+    @apply bg-primary text-on-primary hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 ring-[--color-ring];
+}
+
+.btn-ghost {
+    @apply bg-transparent text-text hover:bg-surface;
+}
+
+.btn-outline {
+    @apply border border-edge bg-surface hover:bg-bg;
+}
+
+/* header spacing like mockup */
+.site-header {
+    @apply border-b border-edge bg-bg;
+}
+
+.site-header-inner {
+    @apply container h-16 flex items-center justify-between;
+}
+
+/* tiny chips for categories */
+.chip {
+    @apply inline-flex items-center rounded-full px-2 py-1 text-[11px] font-medium;
+}
+
+.chip-blue {
+    @apply bg-link/12 text-link;
+}
+
+.chip-amber {
+    background: var(--color-accent-yellow);
+    color: oklch(27% 0.05 90);
+}
+
+.chip-green {
+    background: var(--color-accent-green);
+    color: oklch(20% 0.05 148);
+}
+
+
 /************ header css start  *******/
 
 .header-dropdown ul {
@@ -14,10 +183,48 @@
     padding: 8px 13px;
     width: 100%;
 }
+
 .header-dropdown ul li:not(:last-child) {
     border-bottom: 1px solid #00000012;
 }
 
 
+
+
+.menu-open:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: #00000040;
+    z-index: 8;
+}
+
+.menu-open {
+    overflow: hidden;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 242px;
+    z-index: 13;
+    border-radius: 0;
+}
+
+.header-dropdown ul li {
+    width: 100%;
+    padding: 0px 6px;
+    margin-bottom: 0;
+}
+
+.header-dropdown ul {
+    border-left: 1px solid navajowhite;
+    padding-left: 9px;
+}
 
 /************ header css end  *******/
