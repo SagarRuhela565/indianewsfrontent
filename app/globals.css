@@ -2,6 +2,45 @@
 
 
 
+
+
+/* =========
+   DARK THEME (manual via .dark or [data-theme="dark"])
+   ========= */
+:root[data-theme="dark"],
+.dark {
+    @theme {
+        --color-bg: oklch(22% 0.02 256);
+        --color-surface: oklch(28% 0.02 256);
+        --color-edge: oklch(40% 0.02 256);
+
+        --color-text: oklch(95% 0.01 256);
+        --color-text-muted: oklch(72% 0.03 256);
+        --color-text-inverse: oklch(12% 0 0);
+
+        --color-primary: oklch(51.7% 0.201 27.07);
+        --color-on-primary: oklch(100% 0 0);
+
+        --color-link: oklch(70% 0.18 262);
+        --color-link-hover: oklch(64% 0.18 262);
+
+        --color-ring: var(--color-primary);
+
+        --shadow-soft: 0 8px 24px rgba(0, 0, 0, .35);
+        --shadow-card: 0 10px 30px rgba(0, 0, 0, .45);
+    }
+
+    :root {
+        font-family: var(--font-sans);
+    }
+
+    html,
+    body {
+        @apply bg-bg text-text;
+    }
+}
+
+
 /* =========
    DESIGN TOKENS (LIGHT)
    ========= */
@@ -13,7 +52,7 @@
     /* core surfaces & text */
     --color-bg: oklch(100% 0 0);
     /* page background */
-    --color-surface: oklch(98% 0.01 256);
+    --color-surface: oklch(96.21% 0 0);
     /* card background (very light gray) */
     --color-edge: oklch(90% 0.02 256);
     /* borders/dividers */
@@ -56,46 +95,18 @@
 
 }
 
-/* =========
-   DARK THEME (manual via .dark or [data-theme="dark"])
-   ========= */
-:root[data-theme="dark"],
-.dark {
-    @theme {
-        --color-bg: oklch(22% 0.02 256);
-        --color-surface: oklch(28% 0.02 256);
-        --color-edge: oklch(40% 0.02 256);
-
-        --color-text: oklch(95% 0.01 256);
-        --color-text-muted: oklch(72% 0.03 256);
-        --color-text-inverse: oklch(12% 0 0);
-
-        --color-primary: oklch(51.7% 0.201 27.07);
-        --color-on-primary: oklch(100% 0 0);
-
-        --color-link: oklch(70% 0.18 262);
-        --color-link-hover: oklch(64% 0.18 262);
-
-        --color-ring: var(--color-primary);
-
-        --shadow-soft: 0 8px 24px rgba(0, 0, 0, .35);
-        --shadow-card: 0 10px 30px rgba(0, 0, 0, .45);
-    }
-
-    :root {
-        font-family: var(--font-sans);
-    }
-
-    html,
-    body {
-        @apply bg-bg text-text;
-    }
-}
 
 
-h1,h2,h3,h4,h5,h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-timesnewer);
 }
+
 /* =========
    BASE
    ========= */
@@ -169,6 +180,11 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
+.f-poppins {
+    font-family: var(--font-sans);
+}
+
+
 /************ header css start  *******/
 
 .header-dropdown ul {
@@ -228,3 +244,51 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /************ header css end  *******/
+
+
+/************ slider  start *************/
+
+.swiper-horizontal :is(.swiper-button-prev, .swiper-button-next)  {
+    background-color: var(--color-primary);
+    border-radius: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+
+
+
+.swiper-horizontal:hover :is(.swiper-button-prev, .swiper-button-next):not(.swiper-button-disabled) {
+    opacity: 1;
+}
+
+
+.swiper-horizontal :is(.swiper-button-prev, .swiper-button-next):not(.swiper-button-disabled):hover {
+    opacity: 0.8;
+}
+
+
+.swiper-horizontal :is(.swiper-button-prev, .swiper-button-next).swiper-button-disabled  {
+    opacity: 0;
+}
+
+
+
+:is(.swiper-button-prev, .swiper-button-next) svg {
+    aspect-ratio: 1/1;
+    width: auto;
+    height: 55%;
+    color: #fff;
+}
+
+
+
+
+
+
+
+/************ slider  start *************/

@@ -1,5 +1,8 @@
 import FeaturedCarousel from "./components/FeaturedCarousel/FeaturedCarousel";
+import LatestNews from "./components/LatestNews/LatestNews";
 import Media from "./components/Media/Media";
+import NewsCard from "./components/NewsCard/NewsCard";
+import PageMainBox from "./components/PageMainBox/PageMainBox";
 import Posts from "./components/post";
 import { wpFetch } from "./lib/globalApi";
 
@@ -18,54 +21,15 @@ export default async function Home() {
 
   return (
     <>
-      <Posts />
-      <FeaturedCarousel/>
+      <PageMainBox />
+      <LatestNews />
+      <NewsCard />
+
+      {/* <Posts /> */}
+      {/* <FeaturedCarousel /> */}
 
       <main className="container">
-        <section className="grid gap-6 lg:grid-cols-2 items-center">
-          <div className="overflow-hidden rounded-2xl">
-            <img
-              src="/images/feature-poster.jpg"
-              alt="John Wick Chapter 4 Poster"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="space-y-6">
-            {/* Info text */}
-            <div className="flex items-center gap-2 text-[16px] text-text-muted">
-              <img src="/icons/netflix.svg" alt="Netflix" className="h-5 w-5" />
-              <span>Netflix</span>
-              <span>•</span>
-              <span>12 minutes ago</span>
-            </div>
 
-            {/* Heading */}
-            <h1
-              className="
-            font-extrabold leading-tight
-            text-[36px] md:text-[40px]  2xl:text-[64px]
-          "
-            >
-              Where To Watch 'John Wick: Chapter 4'
-            </h1>
-
-            {/* Body text */}
-            <p className="text-[26px] text-text-muted leading-relaxed">
-              There&apos;s been no official announcement regarding John Wick:
-              Chapter 4&apos;s streaming release. However, given it&apos;s a
-              Lionsgate film, John Wick: Chapter 4 will eventually be released on
-              Starz…
-            </p>
-
-            {/* Category + read time */}
-            <div className="flex items-center gap-3 text-[16px]">
-              <a href="#" className="text-primary hover:underline">
-                Movies
-              </a>
-              <span className="text-text-muted">• 4 min read</span>
-            </div>
-          </div>
-        </section>
       </main>
 
 
