@@ -30,7 +30,9 @@ const Media: React.FC<MediaProps> = ({
   }, [mediaId]);
 
   if (!src) {
-    return <div className="bg-gray-200 w-full h-[300px] rounded-lg" />;
+    // return <div className="bg-gray-200 w-full h-[300px] rounded-lg" />;
+    return "";
+
   }
 
   return (

@@ -1,10 +1,14 @@
 import FeaturedCarousel from "./components/FeaturedCarousel/FeaturedCarousel";
-import LatestNews from "./components/LatestNews/LatestNews";
 import Media from "./components/Media/Media";
-import NewsCard from "./components/NewsCard/NewsCard";
 import PageMainBox from "./components/PageMainBox/PageMainBox";
+import BuletinStory from "./components/BuletinStory/BuletinStory";
+
 import Posts from "./components/post";
 import { wpFetch } from "./lib/globalApi";
+import TopNews from "./components/TopNews/TopNews";
+import LatestNews from "./components/LatestNews/LatestNews";
+import CatagoryHighlight from "./components/CatagoryHighlight/CatagoryHighlight";
+import MustReadSection from "./components/PopularStoriesa/PopularStoriesa";
 
 export default async function Home() {
   // 1. Fetch the page
@@ -22,9 +26,11 @@ export default async function Home() {
   return (
     <>
       <PageMainBox />
+      <TopNews />
       <LatestNews />
-      <NewsCard />
-
+      <BuletinStory />
+      <CatagoryHighlight />
+      <MustReadSection />
       {/* <Posts /> */}
       {/* <FeaturedCarousel /> */}
 

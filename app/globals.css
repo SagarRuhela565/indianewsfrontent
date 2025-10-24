@@ -286,6 +286,25 @@ h6 {
 }
 
 
+.swiper  .swiper-pagination {
+    position: unset;
+}
+
+.swiper  .swiper-pagination {
+    margin-top: 45px;
+}
+
+
+.swiper  .swiper-pagination .swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    --swiper-pagination-bullet-horizontal-gap: 6px;
+}
+
+.swiper  .swiper-pagination-bullet-active {
+    background-color: var(--color-primary);
+}
+
 
 
 
