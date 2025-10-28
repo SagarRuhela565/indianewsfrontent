@@ -7,6 +7,12 @@
 /* =========
    DARK THEME (manual via .dark or [data-theme="dark"])
    ========= */
+
+html,
+body {
+    line-height: 1.3;
+}
+
 :root[data-theme="dark"],
 .dark {
     @theme {
@@ -37,6 +43,7 @@
     html,
     body {
         @apply bg-bg text-text;
+        line-height: 1.3;
     }
 }
 
@@ -248,7 +255,7 @@ h6 {
 
 /************ slider  start *************/
 
-.swiper-horizontal :is(.swiper-button-prev, .swiper-button-next)  {
+.swiper-horizontal :is(.swiper-button-prev, .swiper-button-next) {
     background-color: var(--color-primary);
     border-radius: 100%;
     padding: 10px;
@@ -272,7 +279,7 @@ h6 {
 }
 
 
-.swiper-horizontal :is(.swiper-button-prev, .swiper-button-next).swiper-button-disabled  {
+.swiper-horizontal :is(.swiper-button-prev, .swiper-button-next).swiper-button-disabled {
     opacity: 0;
 }
 
@@ -286,28 +293,77 @@ h6 {
 }
 
 
-.swiper  .swiper-pagination {
+.swiper .swiper-pagination {
     position: unset;
 }
 
-.swiper  .swiper-pagination {
+.swiper .swiper-pagination {
     margin-top: 45px;
 }
 
 
-.swiper  .swiper-pagination .swiper-pagination-bullet {
+.swiper .swiper-pagination .swiper-pagination-bullet {
     width: 15px;
     height: 15px;
     --swiper-pagination-bullet-horizontal-gap: 6px;
 }
 
-.swiper  .swiper-pagination-bullet-active {
+.swiper .swiper-pagination-bullet-active {
     background-color: var(--color-primary);
 }
 
 
 
 
-
-
 /************ slider  start *************/
+
+/************* popular section  *************/
+
+.small-img img {
+    aspect-ratio: 16/5.3;
+}
+
+.small-img a.rounded-\[1rem\] {
+    border-radius: 10px;
+}
+
+@media (max-width: 1536px) {
+    .popolar-center-img {
+        aspect-ratio: 16 / 18;
+    }
+
+}
+
+
+@media(max-width: 1280px) {
+    .popolar-center-img {
+        aspect-ratio: 16 / 20;
+    }
+
+}
+
+@media(max-width: 991px) {
+    .popolar-center-img {
+        aspect-ratio: 16 / 27;
+    }
+
+}
+
+@media(max-width: 767px) {
+    .popolar-center-img {
+        aspect-ratio: 1/1;
+    }
+
+}
+/************* popular section end *************/
+
+/****** newsletter form css ****/
+.news-letter-form :is(input, button) {
+    border-radius: 8px;
+}
+
+.news-letter-form input::placeholder {
+    opacity: 1;
+    color: #333;
+}
+/****** newsletter form css ****/

@@ -1,7 +1,7 @@
 import React from "react";
 import Media from "../Media/Media";
 
-const NewsCard = ({ item }) => {
+const NewsCard = ({ item, para = true }) => {
   const {
     href = "#",
     title = "",
@@ -12,6 +12,7 @@ const NewsCard = ({ item }) => {
     readTime = "",
     featured_media,
     author_media,
+    
   } = item || {};
 
   return (
@@ -37,13 +38,13 @@ const NewsCard = ({ item }) => {
 
       {/* title */}
       <a href={href} className="block">
-        <h4 className="text-gray-900 font-extrabold leading-snug text-[24px] sm:text-[28px] line-clamp-2">
+        <h4 className="text-gray-900 font-extrabold text-[24px] sm:text-[24px] xl:text-[28px]  line-clamp-2">
           {title}
         </h4>
       </a>
 
       {/* excerpt */}
-      <p className="text-text-muted line-clamp-3">{excerpt}</p>
+      {para && <p className="text-text-muted line-clamp-3 leading-relaxed">{excerpt}</p>}
 
       {/* footer */}
       <div className="flex items-center gap-3 pt-1 text-[14px]">

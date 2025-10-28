@@ -7,8 +7,9 @@ import "swiper/css/navigation";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Media from "../Media/Media";
+import { use } from "react";
 
-export default function TopNews() {
+export default function TopNews({ topNews }: { topNews: any[] }) {
     return (
         <section className="mt-12 lg:mt-16 xl:mt-20">
             <div className="container relative">
@@ -25,8 +26,7 @@ export default function TopNews() {
                     navigation={true}
                     modules={[Autoplay, Navigation]}
                 >
-                    {/* Slide 1 */}
-                    <SwiperSlide>
+                    {/* <SwiperSlide>
                         <div className="grid gap-12 lg:grid-cols-2 items-center">
                             <div className="overflow-hidden rounded-2xl">
                                 <Media mediaId={58} className="w-full h-auto" />
@@ -56,8 +56,6 @@ export default function TopNews() {
                             </div>
                         </div>
                     </SwiperSlide>
-
-                    {/* Slide 2 */}
                     <SwiperSlide>
                         <div className="grid gap-12 lg:grid-cols-2 items-center">
                             <div className="overflow-hidden rounded-2xl">
@@ -84,7 +82,74 @@ export default function TopNews() {
                                 </div>
                             </div>
                         </div>
-                    </SwiperSlide>
+                    </SwiperSlide> */}
+
+
+
+
+
+
+
+
+
+                    {topNews?.map((item) => (
+                        <SwiperSlide key={item.id}>
+                            <div className="grid gap-12 lg:grid-cols-2 items-center">
+                                {/* Featured Image */}
+                                <div className="overflow-hidden rounded-2xl">
+                                    <Media mediaId={item.featured_media} className="w-full h-auto" />
+                                </div>
+
+                                {/* News Details */}
+                                <div className="space-y-6">
+                                    {/* Author Info (optional) */}
+                                    <div className="flex items-center gap-2 text-[16px] text-text-muted">
+                                        <Media
+                                            mediaId={71} // or replace dynamically if available
+                                            className="w-8 h-8 object-cover object-center rounded-full"
+                                            width={1000}
+                                            height={1000}
+                                        />
+                                        <span>GKU News</span>
+                                        <span>•</span>
+                                        <span>
+                                            {new Date(item.date).toLocaleDateString("en-US", {
+                                                day: "numeric",
+                                                month: "short",
+                                                year: "numeric",
+                                            })}
+                                        </span>
+                                    </div>
+
+                                    {/* Title */}
+                                    <h1 className="font-extrabold leading-tight text-[36px] md:text-[40px] 2xl:text-[64px]">
+                                        {item.title.rendered}
+                                    </h1>
+
+                                    {/* Content / Excerpt */}
+                                    <p
+                                        className="text-[26px] text-text-muted leading-relaxed"
+                                        dangerouslySetInnerHTML={{
+                                            __html: item.content.rendered.slice(0, 200) + "...",
+                                        }}
+                                    />
+
+                                    {/* Category and Link */}
+                                    <div className="flex items-center gap-3 text-[16px]">
+                                        <a
+                                            href={item.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-primary hover:underline"
+                                        >
+                                            View More
+                                        </a>
+                                        <span className="text-text-muted">• {item.categories?.length || 0} Categories</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </div>
         </section>

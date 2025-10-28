@@ -9,34 +9,46 @@ import TopNews from "./components/TopNews/TopNews";
 import LatestNews from "./components/LatestNews/LatestNews";
 import CatagoryHighlight from "./components/CatagoryHighlight/CatagoryHighlight";
 import MustReadSection from "./components/PopularStoriesa/PopularStoriesa";
+import NewsLetter from "./components/NewsLetter/NewsLetter";
 
 export default async function Home() {
   // 1. Fetch the page
   const page = await wpFetch<any>("pages/2");
 
   // 2. Get the related news IDs from ACF
-  const newsIds: number[] = page?.acf?.select_feature_news || [];
+  const topNewsIds = page?.acf?.top_news || [];
 
   // 3. Fetch the related news posts (if any IDs exist)
-  let featuredNews = [];
-  if (newsIds.length > 0) {
-    featuredNews = await wpFetch<any[]>(`news?include=${newsIds.join(",")}`);
+  let topNews = [];
+  if (topNewsIds.length > 0) {
+    topNews = await wpFetch<any[]>(`news?include=${topNewsIds.join(",")}`);
   }
+
+
+
+  const latestNewsIds = page?.acf?.select_featured_news || [];
+
+
+  let latestNews = [];
+  if (latestNewsIds.length > 0) {
+    latestNews = await wpFetch<any[]>(`news?include=${latestNewsIds.join(",")}`);
+  }
+
+
+
+  console.log("Page Data:", latestNews);
 
   return (
     <>
-      <PageMainBox />
-      <TopNews />
-      <LatestNews />
-      <BuletinStory />
+      <PageMainBox page={page} />
+      <TopNews topNews={topNews} />
+      <LatestNews latestNews={latestNews} />
+      {/* <BuletinStory /> */}
       <CatagoryHighlight />
       <MustReadSection />
+      <NewsLetter />
       {/* <Posts /> */}
       {/* <FeaturedCarousel /> */}
-
-      <main className="container">
-
-      </main>
 
 
 

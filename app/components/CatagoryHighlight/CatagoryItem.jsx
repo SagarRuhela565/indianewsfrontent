@@ -15,7 +15,7 @@ const CatagoryItem = ({ imageUrl, title, description, buttonText, buttonLink }) 
         <h4 className="text-gray-900 font-extrabold leading-snug text-[24px] sm:text-[28px] line-clamp-2">
           {title}
         </h4>
-        <p className="text-text-muted line-clamp-3 mb-3">
+        <p className="text-text-muted line-clamp-3 mb-3 leading-relaxed">
           {description}
         </p>
         <a href={buttonLink} className="btn btn-primary">

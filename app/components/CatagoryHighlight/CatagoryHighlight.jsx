@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import CatagoryItem from "./CatagoryItem";
+import SectionHeader from "../seccomponent/SectionHeader";
 
 const dummyCardData = [
     {
@@ -48,7 +49,7 @@ const dummyCardData = [
         buttonLink: "#campus-news",
     },
        {
-        id: 4,
+        id: 5,
         imageUrl:
             "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
         title: "Campus News",
@@ -58,7 +59,7 @@ const dummyCardData = [
         buttonLink: "#campus-news",
     },
        {
-        id: 4,
+        id: 6,
         imageUrl:
             "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
         title: "Campus News",
@@ -73,9 +74,9 @@ const CatagoryHighlight = ({ cardsData = dummyCardData }) => {
     return (
         <section className="py-16 md:py-24 bg-surface mt-12 lg:mt-16 xl:mt-20">
             <div className="container mx-auto">
-                <h2 className="text-[36px] md:text-[40px] 2xl:text-[64px] font-medium leading-tight f-poppins text-gray-900 lg:mb-5 mb-3 ">
-                    Category Highlights
-                </h2>
+
+                 <SectionHeader title="Category Highlights"/>
+
 
                 <Swiper
                     modules={[Pagination]}
