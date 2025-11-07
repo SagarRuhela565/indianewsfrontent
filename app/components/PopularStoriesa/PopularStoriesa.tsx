@@ -3,8 +3,6 @@ import NewsCard from '../NewsCard/NewsCard';
 import Media from '../Media/Media';
 import SectionHeader from '../seccomponent/SectionHeader';
 
-const imageUrl = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3";
-
 type NewsItem = {
   id: string;
   image: string;

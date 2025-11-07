@@ -35,8 +35,12 @@ export default async function Home() {
   }
 
 
+  const ArticleIDs = page?.acf?.select_latest_articles || [];
 
-  console.log("Page Data:", latestNews);
+  let articlesPost = [];
+  if (ArticleIDs.length > 0) {
+    articlesPost = await wpFetch<any[]>(`news?include=${ArticleIDs.join(",")}`);
+  }
 
   return (
     <>
@@ -44,7 +48,7 @@ export default async function Home() {
       <TopNews topNews={topNews} />
       <LatestNews latestNews={latestNews} />
       {/* <BuletinStory /> */}
-      <CatagoryHighlight />
+      {/* <CatagoryHighlight cardsData={cardsData} /> */}
       <MustReadSection />
       <NewsLetter />
       {/* <Posts /> */}

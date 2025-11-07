@@ -1,14 +1,21 @@
 // components/CardItem.jsx
+import Image from 'next/image';
 import React from 'react';
+import Media from '../Media/Media';
 
-const CatagoryItem = ({ imageUrl, title, description, buttonText, buttonLink }) => {
+const CatagoryItem = ({ imageID, title, description, buttonText, buttonLink }) => {
   return (
     <div className="card h-full flex flex-col">
       <div className="relative overflow-hidden rounded-t-[var(--radius-2xl)] h-50 sm:h-70">
-        <img 
-          src={imageUrl} 
-          alt={title} 
-          className="absolute inset-0 w-full h-full object-cover" 
+        {/* <Image
+          src={imageUrl}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover"
+          id=''
+        /> */}
+        <Media
+          mediaId={imageID || 113}
+          className="w-full h-auto aspect-square object-center object-cover"
         />
       </div>
       <div className="p-6 flex flex-col flex-grow">
