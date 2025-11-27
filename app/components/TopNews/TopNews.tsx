@@ -8,8 +8,15 @@ import "swiper/css/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Media from "../Media/Media";
 import { use } from "react";
+import { useEffect, useState } from "react";
 
 export default function TopNews({ topNews }: { topNews: any[] }) {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     return (
         <section className="mt-12 lg:mt-16 xl:mt-20">
             <div className="container relative">
@@ -112,13 +119,15 @@ export default function TopNews({ topNews }: { topNews: any[] }) {
                                         />
                                         <span>GKU News</span>
                                         <span>•</span>
-                                        <span>
-                                            {new Date(item.date).toLocaleDateString("en-US", {
-                                                day: "numeric",
-                                                month: "short",
-                                                year: "numeric",
-                                            })}
-                                        </span>
+                                        {isClient && (
+                                            <span>
+                                                {new Date(item.date).toLocaleDateString("en-US", {
+                                                    day: "numeric",
+                                                    month: "short",
+                                                    year: "numeric",
+                                                })}
+                                            </span>
+                                        )}
                                     </div>
 
                                     {/* Title */}
@@ -130,7 +139,7 @@ export default function TopNews({ topNews }: { topNews: any[] }) {
                                     <p
                                         className="text-[26px] text-text-muted leading-relaxed"
                                         dangerouslySetInnerHTML={{
-                                            __html: item.content.rendered.slice(0, 200) + "...",
+                                            __html: item.excerpt?.rendered || "",
                                         }}
                                     />
 
