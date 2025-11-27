@@ -10,7 +10,7 @@ const Header = async () => {
 
 
   return (
-    <header className="border-edge py-3 bg-">
+    <header className="border-edge py-3">
       <div className="container mx-auto flex items-center justify-between px-2">
         {/* Logo */}
         {logo && <CustomLogo logo={logo} />}
